@@ -5,19 +5,17 @@ pipeline {
         NAME = "spring-app"
         VERSION = "${env.BUILD_ID}"
         GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-        IMAGE_REPO = "praveensirvi"
+        IMAGE_REPO = "tobirachel"
         GIT_REPO_NAME = "DevOps_MasterPiece-CD-with-argocd"
-        GIT_USER_NAME = "praveensirvi1212"
+        GIT_USER_NAME = "Tobirachel"
        
     }
 
-    tools { 
-        maven 'maven-3.8.6' 
-    }
+
     stages {
         stage('Checkout git') {
             steps {
-              git branch: 'main', url:'https://github.com/praveensirvi1212/DevOps_MasterPiece-CI-with-Jenkins.git'
+              git branch: 'main', url:'https://github.com/Tobirachel/DevOps_MasterPiece-CI-with-Jenkins.git'
             }
         }
         
@@ -56,7 +54,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        def server = Artifactory.newServer url: 'http://13.232.95.58:8082/artifactory', credentialsId: 'jfrog-cred'
+                        def server = Artifactory.newServer url: 'http://52.53.199.22:8081/artifactory', credentialsId: 'jfrog'
                         def uploadSpec = """{
                             "files": [
                                 {
